@@ -1,4 +1,4 @@
-import scipy
+import scipy.sparse
 import numpy as np
 import operator
 

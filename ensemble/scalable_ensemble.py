@@ -4,18 +4,26 @@ from build_hypergraph_matrix import *
 from sklearn import cluster
 import numpy as np
 
+_VERBOSE_LEVEL = 0
 
-def scalable_ensemble_spectral(base_clusterings, n_representatives, class_num, n_km_init, n_spec_init, km_init):
+
+def scalable_ensemble_spectral(base_clusterings, n_representatives, class_num,
+                               n_km_init, n_spec_init, km_init='random'):
     """
     scalable co-association clustering ensemble using spectral clustering
 
-    :param base_clusterings:
-    :param n_representatives:
-    :param class_num:
+    Parameters
+    ----------
+    :param base_clusterings: clusterings to ensemble
+    :param n_representatives: number of representative points
+    :param class_num: class number of the dataset
     :param n_km_init:
     :param n_spec_init:
     :param km_init:
-    :return:
+
+    Returns
+    -------
+    :return: ensemble labels
     """
     # get basic information
     n_sols = base_clusterings.shape[0]
@@ -28,7 +36,7 @@ def scalable_ensemble_spectral(base_clusterings, n_representatives, class_num, n
     adjc = adjc.transpose()
 
     # train k-means model
-    km_model = cluster.KMeans(n_clusters=n_representatives, n_init=n_km_init, verbose=5, init=km_init)
+    km_model = cluster.KMeans(n_clusters=n_representatives, n_init=n_km_init, verbose=_VERBOSE_LEVEL, init=km_init)
     t1 = tt.clock()
     km_model.fit(adjc)
     t2 = tt.clock()
