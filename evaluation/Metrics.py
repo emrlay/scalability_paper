@@ -2,6 +2,7 @@ import numpy as np
 from sklearn.metrics.cluster import entropy
 from sklearn.metrics.cluster import contingency_matrix
 from sklearn import metrics
+import itertools
 
 
 def check_clusterings(labels_true, labels_pred):
@@ -119,3 +120,6 @@ def precision(label_true, label_pred):
     for clu in predicted_clusters:
         cur_num += np.logical_and(label_pred == clu, label_true == best_match[clu]).astype(int).sum()
     return float(cur_num) / n_samples
+
+# def _permutation(len):
+    # best_match
