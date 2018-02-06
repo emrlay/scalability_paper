@@ -95,7 +95,7 @@ if __name__ == '__main__':
     ylabel = 'NMI'
     xticks = ['0.25n', '0.5n', 'n', '1.5n', '2n']
 
-    data, names = load_result_from_excel('Incre_result_added_prop.xlsx', _default_dataset)
+    data, names = load_result_from_excel('Noise_result_added_prop.xlsx', _default_dataset)
     print data
     print names
     #

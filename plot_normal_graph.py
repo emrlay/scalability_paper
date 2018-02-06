@@ -18,7 +18,7 @@ def plot(comparisons, raw_data, colors, markers, linestyles, titles, xlabel, yla
     for raw_data_per_set in raw_data:
         set_dict = _build_dict(raw_data_per_set, comparisons)
         data.append(set_dict)
-    fig, ax = plt.subplots(nrows=nrow, ncols=ncol, figsize=(7, 10))
+    fig, ax = plt.subplots(nrows=nrow, ncols=ncol, figsize=(7.3, 10))
     count = 0
     xticks_data = range(raw_data[0].shape[1])
     print xticks_data
@@ -42,12 +42,13 @@ def plot(comparisons, raw_data, colors, markers, linestyles, titles, xlabel, yla
                 col.set_xticklabels(xticks[count - 1], fontsize=tfontsize)
             h, l = col.get_legend_handles_labels()
     fig.tight_layout()
-    plt.subplots_adjust(wspace=0.2, hspace=0.32)
+    plt.subplots_adjust(wspace=0.26, hspace=0.2, top=0.97, bottom=0.10, left=0.11, right=0.96)
     for row in ax:
         for col in row:
             col.set_yticklabels(col.get_yticklabels(), fontsize=tfontsize)
     led = fig.legend(h, l, loc=(0.01, 0), mode='expand', ncol=len(comparisons)/2, fontsize=10)
     led.get_frame().set_edgecolor('white')
+    plt.savefig('test2.png', dpi=600)
     plt.show()
     return
 
