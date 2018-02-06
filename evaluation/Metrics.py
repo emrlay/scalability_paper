@@ -53,6 +53,7 @@ def normalized_max_mutual_info_score(labels_true, labels_pred):
             or classes.shape[0] == clusters.shape[0] == 0):
         return 1.0
     contingency = contingency_matrix(labels_true, labels_pred)
+    print contingency
     contingency = np.array(contingency, dtype='float')
     # Calculate the MI for the two clusterings
     mi = metrics.mutual_info_score(labels_true, labels_pred,
@@ -61,6 +62,44 @@ def normalized_max_mutual_info_score(labels_true, labels_pred):
     # Calculate entropy for each labeling
     h_true, h_pred = entropy(labels_true), entropy(labels_pred)
     nmi_max = mi / max(h_true, h_pred)
+    return nmi_max
+
+
+def normalized_mutual_info_score(labels_true, labels_pred):
+    """
+    A variant version of NMI that is given as:
+    NMI_max = MI(U, V) / max{ H(U), H(V) }
+    based on 'adjusted mutual info score' in sklearn
+
+    Parameters
+    ----------
+    :param labels_true: labels of clustering 1 (as a 1-dimensional ndarray)
+    :param labels_pred: labels of clustering 2 (as a 1-dimensional ndarray)
+    :return: diversity between these two clusterings as a float value
+
+    Returns
+    -------
+    :return: NMI-max between these two clusterings as a float value
+
+    """
+    labels_true, labels_pred = check_clusterings(labels_true, labels_pred)
+    n_samples = labels_true.shape[0]
+    classes = np.unique(labels_true)
+    clusters = np.unique(labels_pred)
+    # Special limit cases: no clustering since the data is not split.
+    # This is a perfect match hence return 1.0.
+    if (classes.shape[0] == clusters.shape[0] == 1
+            or classes.shape[0] == clusters.shape[0] == 0):
+        return 1.0
+    contingency = contingency_matrix(labels_true, labels_pred)
+    contingency = np.array(contingency, dtype='float')
+    # Calculate the MI for the two clusterings
+    mi = metrics.mutual_info_score(labels_true, labels_pred,
+                           contingency=contingency)
+    # Calculate the expected value for the mutual information
+    # Calculate entropy for each labeling
+    h_true, h_pred = entropy(labels_true), entropy(labels_pred)
+    nmi_max = mi / (h_true + h_pred)
     return nmi_max
 
 

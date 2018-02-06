@@ -10,6 +10,8 @@ import ensemble.CSPA as CSPA
 import scipy.sparse
 from sklearn import metrics
 import time
+import gc
+
 
 def load_banknote(normalized=True):
     data = []
@@ -198,9 +200,30 @@ def load_mnist_4000():
 
 if __name__ == "__main__":
     """
+    HEPMASS
+    """
+    # data = np.loadtxt('E:/select1m.csv', delimiter=',')
+    # t = data[:, 0].astype(np.int)
+    # d = data[:, 1:]
+    # gc.collect()
+    # lib = np.loadtxt('library/HEPMASS_5-10_0.7_0.7_50_FSRSNC_pure.res', delimiter=',')
+    # print 'Load Feature completed.!'
+    # label = se.scalable_ensemble_spectral(lib, 280, 2, 1, 10, km_init='random')
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # label = se.scalable_ensemble_spectral(lib, 360, 2, 1, 10, km_init='random')
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # label = se.scalable_ensemble_spectral(lib, 400, 2, 1, 10, km_init='random')
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print 'all completed.'
+
+
+    """
     USPS
     """
     # d, t = load_usps()
+    # km = cluster.KMeans(n_clusters=10, n_init=1)
+    # km.fit(d)
+    # label = km.labels_
     # lib = np.loadtxt('library/USPS_50-100_0.5_0.3_160_FSRSNC_pure.res', delimiter=',')
     # adjc = bhm.build_hypergraph_adjacency(lib)
     # s = scipy.sparse.csr_matrix.dot(adjc.transpose().tocsr(), adjc)
@@ -208,7 +231,7 @@ if __name__ == "__main__":
     # label = CSPA.CSPA_direct(s, 10)
     # label = spec.spectral_ensemble(lib, 10, 10)
     # label = se.scalable_ensemble_CSPA(lib, 100, 10, 1)
-    # label = se.scalable_ensemble_spectral(lib, 20, 10, 1, 10)
+    # label = se.scalable_ensemble_spectral(lib, 160, 10, 1, 10)
     # print metrics.normalized_mutual_info_score(t, label)
     # print Metrics.normalized_max_mutual_info_score(t, label)
     # print Metrics.precision(t, label)
@@ -218,7 +241,7 @@ if __name__ == "__main__":
     """
     # d, t = load_skin()
     # print np.unique(t)
-    # km = cluster.KMeans(n_clusters=2)
+    # km = cluster.KMeans(n_clusters=2, n_init=1)
     # km.fit(d)
     # label = km.labels_
     # print t.dtype
@@ -235,28 +258,294 @@ if __name__ == "__main__":
     # print Metrics.normalized_max_mutual_info_score(t, label)
     # print Metrics.precision(t, label)
 
+    # CSPA
+    # print '10-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 11, 2, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '10-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 11, 2, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '20-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 20, 2, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '20-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 20, 2, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '40-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 40, 2, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '40-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 40, 2, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '80-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 80, 2, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '80-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 80, 2, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '160-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 160, 2, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '160-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 160, 2, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '240-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 240, 2, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '240-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 240, 2, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '320-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 320, 2, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '320-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 320, 2, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '400-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 400, 2, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '400-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 400, 2, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+
+    # spec
+    # print '10-SSC==================================================================================='
+    # label = se.scalable_ensemble_spectral(lib, 11, 2, 1, 10)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '10-SSC==================================================================================='
+    # label = se.scalable_ensemble_spectral(lib, 11, 2, 1, 10)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '20-SSC==================================================================================='
+    # label = se.scalable_ensemble_spectral(lib, 20, 2, 1, 10)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '20-SSC==================================================================================='
+    # label = se.scalable_ensemble_spectral(lib, 20, 2, 1, 10)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '40-SSC==================================================================================='
+    # label = se.scalable_ensemble_spectral(lib, 40, 2, 1, 10)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '40-SSC==================================================================================='
+    # label = se.scalable_ensemble_spectral(lib, 40, 2, 1, 10)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '80-SSC==================================================================================='
+    # label = se.scalable_ensemble_spectral(lib, 80, 2, 1, 10)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '80-SSC==================================================================================='
+    # label = se.scalable_ensemble_spectral(lib, 80, 2, 1, 10)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '160-SSC==================================================================================='
+    # label = se.scalable_ensemble_spectral(lib, 160, 2, 1, 10)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '160-SSC==================================================================================='
+    # label = se.scalable_ensemble_spectral(lib, 160, 2, 1, 10)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '240-SSC==================================================================================='
+    # label = se.scalable_ensemble_spectral(lib, 240, 2, 1, 10)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '240-SSC==================================================================================='
+    # label = se.scalable_ensemble_spectral(lib, 240, 2, 1, 10)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '320-SSC==================================================================================='
+    # label = se.scalable_ensemble_spectral(lib, 320, 2, 1, 10)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '320-SSC==================================================================================='
+    # label = se.scalable_ensemble_spectral(lib, 320, 2, 1, 10)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '400-SSC==================================================================================='
+    # label = se.scalable_ensemble_spectral(lib, 400, 2, 1, 10)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '400-SSC==================================================================================='
+    # label = se.scalable_ensemble_spectral(lib, 400, 2, 1, 10)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+
     """
     MNIST_FULL
     """
     # d, t = load_mnist_full()
-    # lib = np.loadtxt('library/MNIST_FULL_10-100_0.7_0.5_160_FSRSNC_pure.res', delimiter=',')
-    # label = se.scalable_ensemble_spectral(lib, 100, 10, 1, 10)
+    # km = cluster.KMeans(n_clusters=10, n_init=1)
+    # km.fit(d)
+    # label = km.labels_
     # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # lib = np.loadtxt('library/MNIST_FULL_10-100_0.7_0.5_160_FSRSNC_pure.res', delimiter=',')
+    # print '10-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 11, 10, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '10-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 11, 10, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '20-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 20, 10, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '20-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 20, 10, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '40-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 40, 10, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '40-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 40, 10, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '80-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 80, 10, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '80-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 80, 10, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '160-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 160, 10, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '160-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 160, 10, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '240-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 240, 10, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '240-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 240, 10, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '320-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 320, 10, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '320-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 320, 10, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '400-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 400, 10, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '400-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 400, 10, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+
+    # spec
+    # print '10-SSC==================================================================================='
+    # label = se.scalable_ensemble_spectral(lib, 11, 10, 1, 10)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '10-SSC==================================================================================='
+    # label = se.scalable_ensemble_spectral(lib, 11, 10, 1, 10)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '20-SSC==================================================================================='
+    # label = se.scalable_ensemble_spectral(lib, 20, 10, 1, 10)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '20-SSC==================================================================================='
+    # label = se.scalable_ensemble_spectral(lib, 20, 10, 1, 10)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '40-SSC==================================================================================='
+    # label = se.scalable_ensemble_spectral(lib, 40, 10, 1, 10)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '40-SSC==================================================================================='
+    # label = se.scalable_ensemble_spectral(lib, 40, 10, 1, 10)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '80-SSC==================================================================================='
+    # label = se.scalable_ensemble_spectral(lib, 80, 10, 1, 10)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '80-SSC==================================================================================='
+    # label = se.scalable_ensemble_spectral(lib, 80, 10, 1, 10)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '160-SSC==================================================================================='
+    # label = se.scalable_ensemble_spectral(lib, 160, 10, 1, 10)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '160-SSC==================================================================================='
+    # label = se.scalable_ensemble_spectral(lib, 160, 10, 1, 10)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '240-SSC==================================================================================='
+    # label = se.scalable_ensemble_spectral(lib, 240, 10, 1, 10)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '240-SSC==================================================================================='
+    # label = se.scalable_ensemble_spectral(lib, 240, 10, 1, 10)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '320-SSC==================================================================================='
+    # label = se.scalable_ensemble_spectral(lib, 320, 10, 1, 10)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '320-SSC==================================================================================='
+    # label = se.scalable_ensemble_spectral(lib, 320, 10, 1, 10)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '400-SSC==================================================================================='
+    # label = se.scalable_ensemble_spectral(lib, 400, 10, 1, 10)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '400-SSC==================================================================================='
+    # label = se.scalable_ensemble_spectral(lib, 400, 10, 1, 10)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+
 
     """
     ISOLET-5
     """
-    # d, t = loadIsolet()
-    # lib = np.loadtxt('library/ISOLET_26-46_0.5_0.3_160_FSRSNC.res', delimiter=',')
-    # lib = lib[0:-5]
+    d, t = loadIsolet()
+    lib = np.loadtxt('library/ISOLET_26-46_0.5_0.3_160_FSRSNC.res', delimiter=',')
+    lib = lib[0:-5]
     # km = cluster.KMeans(n_clusters=26)
     # km.fit(d)
     # label = km.labels_
     # label = CSPA.CSPA(lib, 26)
     # label = spec.spectral_ensemble(lib, 26, 10)
-    # label = se.scalable_ensemble_spectral(lib, 104, 26, 1, 10)
+    label = se.scalable_ensemble_spectral(lib, 104, 26, 1, 10)
     # label = se.scalable_ensemble_CSPA(lib, 500, 26, 1)
-    # print Metrics.normalized_max_mutual_info_score(t, label)
+    print Metrics.normalized_max_mutual_info_score(t, label)
     # print Metrics.precision(t, label)
 
     # print lib.shape
@@ -269,81 +558,151 @@ if __name__ == "__main__":
 
     """
     """
-    d, t = load_covtype()
+    # d, t = load_covtype()
     # km = cluster.KMeans(n_clusters=7)
     # km.fit(d)
     # label = km.labels_
-    lib = np.loadtxt('library/covtype_labels.txt', delimiter=',')
+    # lib = np.loadtxt('library/covtype_labels.txt', delimiter=',')
+    # adjc = bhm.build_hypergraph_adjacency(lib)
+    # print adjc.shape
+    # s = scipy.sparse.csr_matrix.dot(adjc.transpose().tocsr(), adjc)
+    # CSPA
+    # print '10-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 11, 7, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '10-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 11, 7, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '20-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 20, 7, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '20-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 20, 7, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '40-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 40, 7, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '40-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 40, 7, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '80-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 80, 7, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '80-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 80, 7, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '160-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 160, 7, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '160-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 160, 7, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '240-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 240, 7, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '240-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 240, 7, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '320-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 320, 7, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '320-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 320, 7, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '400-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 400, 7, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '400-CSPA==================================================================================='
+    # label = se.scalable_ensemble_CSPA(lib, 400, 7, 1)
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+
+
     # label = se.scalable_ensemble_CSPA(lib, 300, 7, 1, km_init='random')
     # print np.unique(label)
     # print Metrics.normalized_max_mutual_info_score(t, label)
     # print metrics.normalized_mutual_info_score(t, label)
     # print Metrics.precision(t, label)
-    print '10============================================================================'
-    label = se.scalable_ensemble_spectral(lib, 10, 7, 1, 10, km_init='random')
-    print Metrics.normalized_max_mutual_info_score(t, label)
-    print Metrics.precision(t, label)
-    print '10============================================================================'
-    label = se.scalable_ensemble_spectral(lib, 10, 7, 1, 10, km_init='random')
-    print Metrics.normalized_max_mutual_info_score(t, label)
-    print Metrics.precision(t, label)
-    print '20============================================================================'
-    label = se.scalable_ensemble_spectral(lib, 20, 7, 1, 10, km_init='random')
-    print Metrics.normalized_max_mutual_info_score(t, label)
-    print Metrics.precision(t, label)
-    print '20============================================================================'
-    label = se.scalable_ensemble_spectral(lib, 20, 7, 1, 10, km_init='random')
-    print Metrics.normalized_max_mutual_info_score(t, label)
-    print Metrics.precision(t, label)
-    print '40============================================================================'
-    label = se.scalable_ensemble_spectral(lib, 40, 7, 1, 10, km_init='random')
-    print Metrics.normalized_max_mutual_info_score(t, label)
-    print Metrics.precision(t, label)
-    print '40============================================================================'
-    label = se.scalable_ensemble_spectral(lib, 40, 7, 1, 10, km_init='random')
-    print Metrics.normalized_max_mutual_info_score(t, label)
-    print Metrics.precision(t, label)
-    print '80============================================================================'
-    label = se.scalable_ensemble_spectral(lib, 80, 7, 1, 10, km_init='random')
-    print Metrics.normalized_max_mutual_info_score(t, label)
-    print Metrics.precision(t, label)
-    print '80============================================================================'
-    label = se.scalable_ensemble_spectral(lib, 80, 7, 1, 10, km_init='random')
-    print Metrics.normalized_max_mutual_info_score(t, label)
-    print Metrics.precision(t, label)
-    print '140============================================================================'
-    label = se.scalable_ensemble_spectral(lib, 140, 7, 1, 10, km_init='random')
-    print Metrics.normalized_max_mutual_info_score(t, label)
-    print Metrics.precision(t, label)
-    print '140============================================================================'
-    label = se.scalable_ensemble_spectral(lib, 140, 7, 1, 10, km_init='random')
-    print Metrics.normalized_max_mutual_info_score(t, label)
-    print Metrics.precision(t, label)
-    print '200============================================================================'
-    label = se.scalable_ensemble_spectral(lib, 200, 7, 1, 10, km_init='random')
-    print Metrics.normalized_max_mutual_info_score(t, label)
-    print Metrics.precision(t, label)
-    print '200============================================================================'
-    label = se.scalable_ensemble_spectral(lib, 200, 7, 1, 10, km_init='random')
-    print Metrics.normalized_max_mutual_info_score(t, label)
-    print Metrics.precision(t, label)
-    print '280============================================================================'
-    label = se.scalable_ensemble_spectral(lib, 280, 7, 1, 10, km_init='random')
-    print Metrics.normalized_max_mutual_info_score(t, label)
-    print Metrics.precision(t, label)
-    print '280============================================================================'
-    label = se.scalable_ensemble_spectral(lib, 280, 7, 1, 10, km_init='random')
-    print Metrics.normalized_max_mutual_info_score(t, label)
-    print Metrics.precision(t, label)
-    print '360============================================================================'
-    label = se.scalable_ensemble_spectral(lib, 360, 7, 1, 10, km_init='random')
-    print Metrics.normalized_max_mutual_info_score(t, label)
-    print Metrics.precision(t, label)
-    print '360============================================================================'
-    label = se.scalable_ensemble_spectral(lib, 360, 7, 1, 10, km_init='random')
-    print Metrics.normalized_max_mutual_info_score(t, label)
-    print Metrics.precision(t, label)
-    print time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
+    # print '10============================================================================'
+    # label = se.scalable_ensemble_spectral(lib, 10, 7, 1, 10, km_init='random')
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '10============================================================================'
+    # label = se.scalable_ensemble_spectral(lib, 10, 7, 1, 10, km_init='random')
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '20============================================================================'
+    # label = se.scalable_ensemble_spectral(lib, 20, 7, 1, 10, km_init='random')
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '20============================================================================'
+    # label = se.scalable_ensemble_spectral(lib, 20, 7, 1, 10, km_init='random')
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '40============================================================================'
+    # label = se.scalable_ensemble_spectral(lib, 40, 7, 1, 10, km_init='random')
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '40============================================================================'
+    # label = se.scalable_ensemble_spectral(lib, 40, 7, 1, 10, km_init='random')
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '80============================================================================'
+    # label = se.scalable_ensemble_spectral(lib, 80, 7, 1, 10, km_init='random')
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '80============================================================================'
+    # label = se.scalable_ensemble_spectral(lib, 80, 7, 1, 10, km_init='random')
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '140============================================================================'
+    # label = se.scalable_ensemble_spectral(lib, 140, 7, 1, 10, km_init='random')
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '140============================================================================'
+    # label = se.scalable_ensemble_spectral(lib, 140, 7, 1, 10, km_init='random')
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '200============================================================================'
+    # label = se.scalable_ensemble_spectral(lib, 200, 7, 1, 10, km_init='random')
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '200============================================================================'
+    # label = se.scalable_ensemble_spectral(lib, 200, 7, 1, 10, km_init='random')
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '280============================================================================'
+    # label = se.scalable_ensemble_spectral(lib, 280, 7, 1, 10, km_init='random')
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '280============================================================================'
+    # label = se.scalable_ensemble_spectral(lib, 280, 7, 1, 10, km_init='random')
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '360============================================================================'
+    # label = se.scalable_ensemble_spectral(lib, 360, 7, 1, 10, km_init='random')
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print '360============================================================================'
+    # label = se.scalable_ensemble_spectral(lib, 360, 7, 1, 10, km_init='random')
+    # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
+    # print time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
 
     """
     COIL20
@@ -362,11 +721,15 @@ if __name__ == "__main__":
     # label = se.scalable_ensemble_CSPA(lib, 400, 10, 1)
     # print d.shape
     # print t.shape
-    # km = cluster.KMeans(n_clusters=10)
+    # km = cluster.KMeans(n_clusters=10, n_init=1, init='random')
     # km.fit(d)
+    # label = km.labels_
+    # label = CSPA.CSPA(lib, 10)
+    # label = spec.spectral_ensemble(lib, 10, 10)
     # print np.unique(t)
     # print np.unique(km.labels_)
     # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
 
     """
     MNIST4000
@@ -374,6 +737,12 @@ if __name__ == "__main__":
     # d, t = load_mnist_4000()
     # lib = np.loadtxt('library/MNIST4000_10-100_0.5_0.8_160_FSRSNC.res', delimiter=',')
     # lib = lib[0:-5]
-    # label = se.scalable_ensemble_CSPA(lib, 400, 10, 1)
+    # label = se.scalable_ensemble_CSPA(lib, 240, 10, 1)
+    # km = cluster.KMeans(n_clusters=10, n_init=1)
+    # km.fit(d)
+    # label = km.labels_
+    # label = spec.spectral_ensemble(lib, 10, 10)
+    # label = CSPA.CSPA(lib, 10)
     # print Metrics.normalized_max_mutual_info_score(t, label)
+    # print Metrics.precision(t, label)
     pass

@@ -20,6 +20,7 @@ def spectral_ensemble(base_clusterings, class_num, n_spec_init):
     adjc = adjc.transpose()
 
     att_mat = adjc.dot(adjc.transpose())
+    att_mat = np.squeeze(np.asarray(att_mat.todense()))
 
     spec_ensembler = cluster.SpectralClustering(n_clusters=class_num, n_init=n_spec_init, affinity='precomputed',
                                                 assign_labels=_assign_labels)

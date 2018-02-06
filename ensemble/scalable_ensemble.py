@@ -11,7 +11,7 @@ _max_iter = 300
 
 
 def scalable_ensemble_spectral(base_clusterings, n_representatives, class_num,
-                               n_km_init, n_spec_init, km_init='k-means++'):
+                               n_km_init, n_spec_init, km_init='k-means++', km_tol=1e-1):
     """
     scalable co-association clustering ensemble using spectral clustering
 
@@ -40,7 +40,8 @@ def scalable_ensemble_spectral(base_clusterings, n_representatives, class_num,
     adjc = adjc.transpose()
 
     # train k-means model
-    km_model = cluster.KMeans(n_clusters=n_representatives, n_init=n_km_init, verbose=_VERBOSE_LEVEL, init=km_init)
+    km_model = cluster.KMeans(n_clusters=n_representatives, n_init=n_km_init, verbose=_VERBOSE_LEVEL, init=km_init,
+                              tol=km_tol, max_iter=20)
     km_model.fit(adjc)
     t2 = tt.clock()
     print ("Representative selection takes:"+str(t2 - t1)+"s")
@@ -89,7 +90,7 @@ def scalable_ensemble_CSPA(base_clusterings, n_representatives, class_num,
     adjc = adjc.transpose()
 
     # train k-means model
-    km_model = cluster.KMeans(n_clusters=n_representatives, n_init=n_km_init, verbose=_VERBOSE_LEVEL, init=km_init)
+    km_model = cluster.KMeans(n_clusters=n_representatives, n_init=n_km_init, verbose=_VERBOSE_LEVEL, init=km_init, max_iter=1)
     km_model.fit(adjc)
     t2 = tt.clock()
     print ("Representative selection takes:"+str(t2 - t1)+"s")

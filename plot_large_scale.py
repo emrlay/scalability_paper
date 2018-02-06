@@ -27,12 +27,13 @@ for row in ax:
             col.set_xlabel('$number\ of\ representatives$')
         col.set_ylabel('NMI' if count % 2 != 0 else 'Accuracy')
         col.set_xticklabels(('1', '2', '3', '44', '55', '666', '777', '888', '999', '000'), fontsize=10)
-        col.legend(loc='lower right', fontsize=10)
+        # col.legend(loc='lower right', fontsize=10)
 
 fig.tight_layout()
 plt.subplots_adjust(wspace=0.2, hspace=0.32)
 for row in ax:
     for col in row:
         col.set_yticklabels(col.get_yticklabels(), fontsize=10)
+plt.legend()
 plt.show()
 
